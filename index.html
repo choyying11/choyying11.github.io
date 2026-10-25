@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Choy Ying's portfolio in business intelligence, data analytics, and data engineering." />
+  <title>Choy Ying | Data Portfolio</title>
+  <style>
+    :root {
+      --bg: #0d1017;
+      --panel: #171c25;
+      --panel-2: #1d2430;
+      --text: #f3f4f6;
+      --muted: #a8b0bd;
+      --gold: #e4bf3f;
+      --gold-soft: rgba(228,191,63,.18);
+      --border: #303744;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65; letter-spacing: .01em;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(13,16,23,.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav { min-height: 74px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { font-size: 1.5rem; font-weight: 800; letter-spacing: -.04em; }
+    .brand span, .gold { color: var(--gold); }
+    .nav-links { display:flex; gap:24px; align-items:center; }
+    .nav-links a { color: var(--muted); font-size:.92rem; transition:color .2s; }
+    .nav-links a:hover { color:var(--gold); }
+    .menu-btn { display:none; background:none; color:var(--text); border:1px solid var(--border); padding:7px 11px; border-radius:8px; font-size:1.2rem; }
+    section { padding: 92px 0; }
+    .hero { min-height: calc(100vh - 74px); display:flex; align-items:center; padding:70px 0 84px; }
+    .hero-grid { display:grid; grid-template-columns:1.35fr .65fr; align-items:center; gap:55px; }
+    .eyebrow { color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; margin-bottom:14px; }
+    h1 { font-size:clamp(2.7rem, 6vw, 5.2rem); line-height:1.05; letter-spacing:-.055em; margin-bottom:18px; }
+    h2 { font-size:clamp(2rem, 4vw, 3.15rem); line-height:1.15; letter-spacing:-.04em; text-align:center; margin-bottom:12px; }
+    .section-line { width:68px; height:4px; border-radius:4px; background:var(--gold); margin:20px auto 48px; }
+    .hero h3 { font-size:clamp(1.25rem, 2.5vw, 1.85rem); font-weight:600; margin-bottom:20px; }
+    .hero p, .lead { color:var(--muted); font-size:1.05rem; max-width:720px; }
+    .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; border-radius:999px; font-weight:750; border:1px solid var(--gold); transition:transform .2s, background .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn.primary { background:var(--gold); color:#171717; box-shadow:0 0 24px var(--gold-soft); }
+    .btn.secondary { color:var(--gold); }
+    .profile-wrap { display:flex; justify-content:center; }
+    .profile-placeholder {
+      width:min(300px, 72vw); aspect-ratio:1; border-radius:50%;
+      display:grid; place-items:center; text-align:center; padding:24px;
+      background:radial-gradient(circle at 35% 25%, #333b4a, #171c25 65%);
+      border:2px solid var(--gold); box-shadow:0 0 35px var(--gold-soft);
+      color:var(--muted); font-size:.95rem;
+    }
+    .profile-placeholder strong { display:block; color:var(--gold); font-size:3.5rem; line-height:1.1; margin-bottom:10px; }
+    .socials { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+    .socials a { border:1px solid var(--gold); color:var(--gold); border-radius:50px; padding:8px 13px; font-size:.88rem; }
+    .socials a:hover { background:var(--gold); color:#111; }
+    .alt { background:#10141c; }
+    .about-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:42px; align-items:start; }
+    .about-card, .timeline-card, .project-card, .skill-card, .contact-card {
+      background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:25px;
+    }
+    .about-card h3 { font-size:1.4rem; margin-bottom:12px; }
+    .about-card p, .about-copy p { color:var(--muted); }
+    .about-copy p + p { margin-top:16px; }
+    .chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
+    .chip { background:var(--gold-soft); border:1px solid rgba(228,191,63,.25); color:#f1d979; padding:6px 11px; border-radius:999px; font-size:.82rem; }
+    .timeline { border-left:2px solid var(--gold); margin-left:10px; padding-left:26px; display:grid; gap:20px; }
+    .timeline-card { position:relative; }
+    .timeline-card::before { content:""; position:absolute; width:13px; height:13px; border-radius:50%; background:var(--gold); left:-34px; top:30px; box-shadow:0 0 0 5px var(--bg); }
+    .date { color:var(--gold); text-transform:uppercase; letter-spacing:.1em; font-size:.78rem; font-weight:750; }
+    .timeline-card h3 { margin:5px 0; font-size:1.2rem; }
+    .timeline-card p { color:var(--muted); }
+    .skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .skill-card { text-align:center; padding:23px 14px; transition:transform .2s, border-color .2s; }
+    .skill-card:hover, .project-card:hover { transform:translateY(-4px); border-color:var(--gold); }
+    .skill-icon { font-size:1.65rem; margin-bottom:9px; }
+    .skill-card h3 { font-size:1rem; margin-bottom:4px; }
+    .skill-card p { color:var(--muted); font-size:.82rem; }
+    .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+    .project-card { overflow:hidden; padding:0; transition:transform .2s, border-color .2s; }
+    .project-art { min-height:155px; display:grid; place-items:center; padding:22px; background:linear-gradient(135deg,#172d3b,#173c49 50%,#20263a); border-bottom:1px solid var(--border); }
+    .flow { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; }
+    .flow span { padding:8px 10px; background:#0d6a80; border:1px solid rgba(255,255,255,.15); border-radius:6px; font-size:.78rem; }
+    .flow b { color:var(--gold); }
+    .project-content { padding:24px; }
+    .project-content h3 { font-size:1.25rem; margin-bottom:9px; }
+    .project-content p { color:var(--muted); margin-bottom:15px; }
+    .project-content .chips { margin:0 0 18px; }
+    .project-link { color:var(--gold); font-weight:750; }
+    .project-link:hover { text-decoration:underline; }
+    .note { color:var(--muted); font-size:.9rem; margin-top:20px; text-align:center; }
+    .contact-card { max-width:740px; margin:auto; text-align:center; }
+    .contact-card p { color:var(--muted); margin:12px 0 22px; }
+    footer { border-top:1px solid var(--border); color:var(--muted); padding:25px 0; text-align:center; font-size:.85rem; }
+    @media (max-width: 800px) {
+      .nav { min-height:66px; }
+      .menu-btn { display:block; }
+      .nav-links { display:none; position:absolute; top:65px; left:0; right:0; padding:18px 4%; background:#11151d; border-bottom:1px solid var(--border); flex-direction:column; align-items:flex-start; gap:16px; }
+      .nav-links.open { display:flex; }
+      .hero { min-height:auto; padding:70px 0; }
+      .hero-grid, .about-grid { grid-template-columns:1fr; }
+      .profile-wrap { grid-row:1; }
+      .hero-copy { text-align:center; }
+      .hero p { margin:auto; }
+      .actions, .socials { justify-content:center; }
+      section { padding:70px 0; }
+      .skills-grid { grid-template-columns:repeat(2,1fr); }
+      .projects-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width: 420px) {
+      .skills-grid { gap:10px; }
+      .skill-card { padding:18px 9px; }
+      .about-card, .timeline-card, .project-content, .contact-card { padding:20px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">Portfolio<span>.</span></a>
+    <button class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about">About Me</a>
+      <a href="#career">Career Path</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Business Intelligence · Analytics · Data Engineering</div>
+        <h1>Hi, I'm <span class="gold">Choy Ying</span></h1>
+        <h3>Turning data into <span class="gold">meaningful decisions.</span></h3>
+        <p>
+          I'm a Business Intelligence Specialist with hands-on experience in SQL, data transformation,
+          dashboard development, and workflow automation. I enjoy connecting business needs with
+          reliable data solutions and am continuing to grow in data engineering.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore My Projects ↘</a>
+          <a class="btn secondary" href="#contact">Get In Touch</a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/choyying11" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="#contact">LinkedIn (add link)</a>
+        </div>
+      </div>
+      <div class="profile-wrap">
+        <div class="profile-placeholder"><div><strong>CY</strong>Add your professional photo<br>as assets/profile.jpg</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="about">
+    <div class="container">
+      <h2>About <span class="gold">Me</span></h2>
+      <div class="section-line"></div>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>My approach</h3>
+          <p>I like understanding the business process behind the data—not just producing a report, but making sure the result is useful, consistent, and actionable.</p>
+          <div class="chips">
+            <span class="chip">Analytical thinking</span><span class="chip">Problem solving</span>
+            <span class="chip">Business understanding</span><span class="chip">Continuous learning</span>
+          </div>
+        </div>
+        <div class="about-copy">
+          <p>My experience spans business intelligence, operational reporting, data preparation, and dashboard development. I work with stakeholders to understand their requirements, transform data into reliable datasets, and communicate performance through clear reporting.</p>
+          <p>I'm particularly interested in improving data pipelines, automating repetitive processes, and learning more about cloud data platforms and modern data engineering practices.</p>
+          <p>I hold a Bachelor of Science (Hons) in Statistical Computing and Operations Research from Universiti Tunku Abdul Rahman (UTAR).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="container">
+      <h2>Career <span class="gold">Path</span></h2>
+      <div class="section-line"></div>
+      <div class="timeline">
+        <article class="timeline-card">
+          <div class="date">Current Role</div>
+          <h3>Business Intelligence Specialist · Carro</h3>
+          <p>Support business teams through data transformation, SQL-based analysis, dashboards, reporting, and automated workflows. Tools include BigQuery, Tableau, Power BI, Python, and Airflow.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="date">Previous Experience</div>
+          <h3>Supply Chain / Data Analytics</h3>
+          <p>Experience with inventory analysis, forecasting and optimization workflows, using Python and BI tools to support operational planning.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="date">Education</div>
+          <h3>BSc (Hons) Statistical Computing and Operations Research · UTAR</h3>
+          <p>Built a foundation in statistics, analytical methods, optimization, and computational problem-solving.</p>
+        </article>
+      </div>
+      <p class="note">Review job titles, dates, and descriptions before publishing so they match your résumé exactly.</p>
+    </div>
+  </section>
+
+  <section class="alt" id="skills">
+    <div class="container">
+      <h2>Tools &amp; <span class="gold">Technologies</span></h2>
+      <div class="section-line"></div>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">⌘</div><h3>SQL</h3><p>Querying &amp; transformation</p></div>
+        <div class="skill-card"><div class="skill-icon">🐍</div><h3>Python</h3><p>Analysis &amp; automation</p></div>
+        <div class="skill-card"><div class="skill-icon">▦</div><h3>BigQuery</h3><p>Cloud data warehouse</p></div>
+        <div class="skill-card"><div class="skill-icon">↻</div><h3>Airflow</h3><p>Workflow orchestration</p></div>
+        <div class="skill-card"><div class="skill-icon">▥</div><h3>Tableau</h3><p>Data visualization</p></div>
+        <div class="skill-card"><div class="skill-icon">▰</div><h3>Power BI</h3><p>BI reporting</p></div>
+        <div class="skill-card"><div class="skill-icon">◈</div><h3>Excel</h3><p>Analysis &amp; reporting</p></div>
+        <div class="skill-card"><div class="skill-icon">⛭</div><h3>ETL / Data Pipelines</h3><p>Data preparation</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Selected <span class="gold">Projects</span></h2>
+      <div class="section-line"></div>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-art"><div class="flow"><span>Source Data</span><b>→</b><span>SQL / Python</span><b>→</b><span>BigQuery</span><b>→</b><span>Dashboard</span></div></div>
+          <div class="project-content">
+            <h3>Automated Data Pipeline</h3>
+            <p>Show how data moves from source systems through transformation and quality checks into a reporting-ready dataset. Replace this summary with a real project example you can share.</p>
+            <div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">BigQuery</span><span class="chip">Airflow</span></div>
+            <a class="project-link" href="https://github.com/choyying11" target="_blank" rel="noreferrer">View GitHub profile ↗</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-art"><div class="flow"><span>Business KPIs</span><b>→</b><span>Trend Analysis</span><b>→</b><span>Insights</span></div></div>
+          <div class="project-content">
+            <h3>Business Performance Dashboard</h3>
+            <p>Present key performance indicators, trends, and business insights in a clear dashboard. Use a synthetic dataset or sanitized screenshots rather than confidential company data.</p>
+            <div class="chips"><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">SQL</span></div>
+            <a class="project-link" href="https://github.com/choyying11" target="_blank" rel="noreferrer">View GitHub profile ↗</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-art"><div class="flow"><span>Inventory Data</span><b>→</b><span>Optimization</span><b>→</b><span>Recommendations</span></div></div>
+          <div class="project-content">
+            <h3>Inventory Analysis &amp; Optimization</h3>
+            <p>Explain the business problem, data preparation, constraints or analytical approach, and how the results support inventory planning. Add only verified outcomes.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Pandas / Polars</span><span class="chip">Power BI</span></div>
+            <a class="project-link" href="https://github.com/choyying11" target="_blank" rel="noreferrer">View GitHub profile ↗</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-art"><div class="flow"><span>Raw Data</span><b>→</b><span>Cleaning</span><b>→</b><span>Analysis</span><b>→</b><span>Findings</span></div></div>
+          <div class="project-content">
+            <h3>Exploratory Data Analysis</h3>
+            <p>Use a public dataset to demonstrate data cleaning, exploratory analysis, visualization, and evidence-based recommendations.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Statistics</span></div>
+            <a class="project-link" href="https://github.com/choyying11" target="_blank" rel="noreferrer">View GitHub profile ↗</a>
+          </div>
+        </article>
+      </div>
+      <p class="note">These are starter project cards. Replace the links and descriptions with your actual public repositories before sharing the site with recruiters.</p>
+    </div>
+  </section>
+
+  <section class="alt" id="contact">
+    <div class="container">
+      <h2>Let's <span class="gold">Connect</span></h2>
+      <div class="section-line"></div>
+      <div class="contact-card">
+        <h3>Interested in working together?</h3>
+        <p>I'm open to connecting about opportunities in business intelligence, data analytics, and data engineering.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="https://github.com/choyying11" target="_blank" rel="noreferrer">GitHub Profile ↗</a>
+          <a class="btn secondary" href="mailto:ADD-YOUR-EMAIL-HERE">Email Me</a>
+        </div>
+        <p class="note">Before publishing, replace the email placeholder and add your LinkedIn profile URL.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">© <span id="year"></span> Choy Ying · Built with GitHub Pages</div>
+</footer>
+<script>
+  const menuButton = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  menuButton.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.textContent = open ? '✕' : '☰';
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '☰';
+    });
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
