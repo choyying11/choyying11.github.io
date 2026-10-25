@@ -122,6 +122,104 @@
       .skill-card { padding:18px 9px; }
       .about-card, .timeline-card, .project-content, .contact-card { padding:20px; }
     }
+
+    /* Recommendations section */
+    .recommendations-intro {
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .recommendation-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 680px);
+      justify-content: center;
+      gap: 24px;
+      margin: 0 auto;
+    }
+    .recommendation-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 34px 32px;
+      background: linear-gradient(145deg, var(--panel-2), var(--panel));
+      border: 1px solid rgba(228, 191, 63, 0.28);
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+      transition: transform 0.25s ease, border-color 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+    .recommendation-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+    }
+    .recommendation-quote-icon {
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 0.8;
+      margin: 4px 0 20px;
+    }
+    .recommendation-text {
+      width: 100%;
+      margin: 0 0 24px;
+      color: var(--text);
+      font-size: 1.02rem;
+      font-style: italic;
+      line-height: 1.85;
+    }
+    .recommendation-author {
+      margin-top: auto;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .recommendation-author h3 {
+      margin: 0 0 5px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 750;
+    }
+    .recommendation-author p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .recommendation-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: var(--gold);
+      color: #171717;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 4px 16px var(--gold-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .recommendation-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 22px rgba(228, 191, 63, 0.32);
+    }
+    .recommendation-link:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+    @media (max-width: 600px) {
+      .recommendation-card { padding: 28px 22px; }
+      .recommendation-text { font-size: 0.96rem; line-height: 1.8; }
+      .recommendation-link { padding: 11px 22px; }
+    }
+
   </style>
 </head>
 <body>
@@ -135,6 +233,7 @@
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#recommendations">Recommendations</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -246,8 +345,6 @@
         <div class="skill-card"><div class="skill-icon">▰</div><h3>Power BI</h3><p>BI reporting</p></div>
         <div class="skill-card"><div class="skill-icon">◈</div><h3>Excel</h3><p>Analysis &amp; reporting</p></div>
         <div class="skill-card"><div class="skill-icon">⛭</div><h3>ETL / Data Pipelines</h3><p>Data preparation</p></div>
-        <div class="skill-card"><div class="skill-icon">⑂</div><h3>Git</h3> <p>Version control &amp; code management</p></div>
-        <div class="skill-card"><div class="skill-icon">⚙</div><h3>dbt</h3><p>SQL transformations and data modeling</p></div>
       </div>
     </div>
   </section>
@@ -298,59 +395,50 @@
     </div>
   </section>
 
+  <section class="alt" id="recommendations">
+    <div class="container">
+      <h2>Recommendations</h2>
+      <div class="section-line"></div>
 
-<section class="alt" id="recommendations">
-  <div class="container">
+      <p class="recommendations-intro">
+        Feedback from colleagues I've had the opportunity to work with,
+        highlighting my professional qualities, collaborative approach,
+        and commitment to continuous growth.
+      </p>
 
-    <h2>Recommendations</h2>
-    <div class="section-line"></div>
+      <div class="recommendation-grid">
+        <article class="recommendation-card">
+          <div class="recommendation-quote-icon" aria-hidden="true">“</div>
 
-    <p class="recommendations-intro">
-      Feedback from colleagues I've had the opportunity to work with,
-      highlighting my professional qualities, collaborative approach,
-      and commitment to continuous growth.
-    </p>
+          <blockquote class="recommendation-text">
+            Choy Ying is a dedicated, hardworking individual who consistently
+            strives for excellence. I have witnessed her strong collaborative
+            spirit and her eagerness to contribute positively to her colleagues,
+            making her an asset to any organization.
+          </blockquote>
 
-    <div class="recommendation-grid">
+          <div class="recommendation-author">
+            <h3>Tan Yee Chen</h3>
+            <p>
+              Senior Legal &amp; Compliance Officer<br>
+              Eco-Shop Marketing Bhd.
+            </p>
+          </div>
 
-      <!-- Recommendation 1 -->
-      <article class="recommendation-card">
-
-        <div class="recommendation-quote-icon" aria-hidden="true">“</div>
-
-        <blockquote class="recommendation-text">
-          Choy Ying is a dedicated, hardworking individual who consistently
-          strives for excellence. I have witnessed her strong collaborative
-          spirit and her eagerness to contribute positively to her colleagues,
-          making her an asset to any organization.
-        </blockquote>
-
-        <div class="recommendation-author">
-          <h3>Tan Yee Chen</h3>
-          <p>
-            Senior Legal &amp; Compliance Officer<br>
-            Eco-Shop Marketing Bhd.
-          </p>
-        </div>
-
-        <a
-          class="recommendation-link"
-          href="assets/recommendation-1.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Read the full recommendation letter from Tan Yee Chen"
-        >
-          Read Full Letter <span aria-hidden="true">↗</span>
-        </a>
-
-      </article>
-
-      <!-- Copy another recommendation-card here when you have a new letter -->
-
+          <a
+            class="recommendation-link"
+            href="assets/recommendation-1.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Read the full recommendation letter from Tan Yee Chen"
+          >
+            Read Full Letter <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
-  
+  </section>
+
   <section class="alt" id="contact">
     <div class="container">
       <h2>Let's <span class="gold">Connect</span></h2>
